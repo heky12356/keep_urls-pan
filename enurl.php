@@ -26,7 +26,7 @@ try {
     $stmt->execute();
 
     echo "数据插入成功！";
-    // header('Location: ./index.html');
+    header('Location: ./index.html');
 } catch (PDOException $e) {
     echo "错误: " . $e->getMessage();
     // header('Location: ./index.html');
