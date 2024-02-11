@@ -3,46 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="funtion.js"></script>
     <title>index</title>
 </head>
 <body>
     <form action="enurl.php" method="post">
-        <label for="name">名字：</label>
+        <label for="options">分类：</label>
+        <input list="options" id="selectedOption" name="option">
+        <datalist id="options"></datalist>
+        <label for="name">链接标题：</label>
         <input type="text" id="name" name="name" required>
-        <label for="url">url：</label>
+        <label for="url">链接网址：</label>
         <input type="text" id="url" name="url" required>
         <button type="submit" name="enurl">添加</button>
     </form>
     <div id="results"></div>
-
-    <script>
-    // 发送 AJAX 请求到服务器端的 PHP 文件
-    var xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState === XMLHttpRequest.DONE) {
-            if (xhr.status === 200) {
-                // 解析返回的 JSON 数据
-                var data = JSON.parse(xhr.responseText);
-                // 处理数据
-                displayResults(data);
-            } else {
-                console.error('Request failed: ' + xhr.status);
-            }
-        }
-    };
-
-    xhr.open('GET', 'requireurl.php', true);
-    xhr.send();
-
-    // 显示结果
-    function displayResults(data) {
-        var resultsDiv = document.getElementById('results');
-        data.forEach(function(row) {
-            resultsDiv.innerHTML += '<a href ="'+row.url+'">' + row.name + '</a></br>';
-        });
-    }
-    </script>
-
 </body>
 
 </html>

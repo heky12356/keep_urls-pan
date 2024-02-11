@@ -10,7 +10,8 @@ $createTableQuery = "
 CREATE TABLE IF NOT EXISTS urls (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     url TEXT  NOT NULL,
-	name TEXT NOT NULL
+	name TEXT NOT NULL,
+    option TEXT NOT NULL
 )";
 
 // 执行创建表的SQL语句

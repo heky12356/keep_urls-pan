@@ -14,4 +14,3 @@ while ($row = $queryResult->fetchArray(SQLITE3_ASSOC)) {
 // 返回 JSON 格式的结果
 header('Content-Type: application/json');
 echo json_encode($resultsArray);
-?>
