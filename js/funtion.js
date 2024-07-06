@@ -14,7 +14,7 @@ xhr.onreadystatechange = function() {
     }
 };
 
-xhr.open('GET', 'requireurl.php', true);
+xhr.open('GET', '../php/requireurl.php', true);
 xhr.send();
 
 // 显示结果
