@@ -3,21 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/marked@3.0.7/marked.min.js"></script>
     <script src="./js/funtion.js"></script>
+    <script src="./js/mkd.js"></script>
+    <link rel="stylesheet" href="./css/main.css">
     <title>index</title>
 </head>
 <body>
-    <form action="./php/enurl.php" method="post">
-        <label for="options">分类：</label>
-        <input list="options" id="selectedOption" name="option">
-        <datalist id="options"></datalist>
-        <label for="name">链接标题：</label>
-        <input type="text" id="name" name="name" required>
-        <label for="url">链接网址：</label>
-        <input type="text" id="url" name="url" required>
-        <button type="submit" name="enurl">添加</button>
-    </form>
+    <div class="right">
+        <div class="container">
+            <form action="./php/enurl.php" method="post">
+                <label for="options">分类：  </label>
+                <input list="options" id="selectedOption" name="option">
+                <datalist id="options"></datalist>
+                <p></p>
+                <label for="name">链接标题：</label>
+                <input type="text" id="name" name="name" required>
+                <p></p>
+                <label for="url">链接网址：</label>
+                <input type="text" id="url" name="url" required>
+                <p></p>
+                <button type="submit" name="enurl">添加</button>
+            </form>
+        </div>
+        <div>
+            <p></p>
+        </div>
+        <div class="container" id ="readme">
+
+        </div>
+    </div>
     <div id="results">
+
     </div>
 </body>
 

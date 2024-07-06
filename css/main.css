@@ -1,0 +1,121 @@
+/* 确保body和html占据整个视口 */
+html,
+body {
+    font-family: "ZCOOL KuaiLe", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    background-image: url('../source/5af17f7f881b11ebb6edd017c2d2eca2.jpg');
+    /* 背景图片路径 */
+    background-size: cover;
+    font-size: 110%;
+}
+
+input {
+    border: 0;
+    /* 设置边框宽度为0 */
+    border-style: none;
+    /* 设置边框样式为none */
+    border-color: initial;
+    /* 设置边框颜色为初始值 */
+    border-radius: 0px;
+    /*圆角*/
+    background-color: rgba(255, 255, 255, 0);
+    border-bottom: 2px solid #c5c1c1;
+}
+
+input:focus {
+    border-color: #00000000;
+    /* 设置获得焦点时的边框颜色 */
+    outline: none;
+    /* 去掉默认的蓝色轮廓 */
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    /* 添加阴影效果 */
+    border-bottom: 2px solid #fff;
+}
+
+/* 主要容器设置为flex布局 */
+.container {
+    display: flex;
+    /* 使用 Flexbox 布局 */
+    flex-direction: column;
+    /* 竖直排列按钮组 */
+    justify-content: center;
+    /* 垂直居中按钮组 */
+    width: 80%;
+    /* 宽度占满父容器 */
+    max-width: 800px;
+    /* 最大宽度 */
+    padding: 20px;
+    /* 内边距 */
+    background-color: rgba(255, 255, 255, 0.3);
+    /* 半透明白色背景 */
+    border-radius: 8px;
+    /*圆角*/
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    /* 阴影效果 */
+}
+
+/* 右侧的div占据20%的宽度 */
+.right {
+    width: 25%;
+    padding: 10px;
+    box-sizing: border-box;
+    border-right: 1px solid #ccc;
+
+}
+
+/* ID为results的div占据剩余的80%的宽度 */
+#results {
+    width: 80%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.indented-link {
+    padding-left: 20px;
+    /* 设置左侧内边距为20像素，可以根据需要调整 */
+    display: inline-block;
+    /* 让链接表现为块级元素，以便应用内边距 */
+}
+
+a {
+    color: #c6cacd;
+    /* 设置链接文本颜色为蓝色 */
+    text-decoration: none;
+    /* 去掉链接的下划线 */
+    font-size: 110%;
+    display: block;
+    /* 将链接设置为块级元素，以便可以控制其上下边距 */
+    margin-bottom: 5px;
+    /* 设置链接下方的外边距为5像素 */
+}
+
+a:hover {
+    text-decoration: underline;
+    /* 鼠标悬停时显示下划线 */
+    color: #f4f8ff;
+    /* 鼠标悬停时修改链接颜色 */
+}
+
+button {
+    font-family: "ZCOOL KuaiLe", sans-serif;
+    border: 0;
+    /* 设置边框宽度为0 */
+    border-style: none;
+    /* 设置边框样式为none */
+    background-color: transparent;
+    color: #000000;
+    /* border-bottom: 2px solid #fff; 只设置下边框 */
+    cursor: pointer;
+    font-size: 90%;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+button:hover {
+    border-bottom: 1px solid #fff;
+}

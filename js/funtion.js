@@ -29,10 +29,10 @@ function displayResults(data) {
     sortedData.forEach(function(row) {
         // 如果当前类别与之前的类别不同，则添加一个标题
         if (row.option !== currentCategory) {
-            html += '<h2>' + row.option + '</h2>';
+            html += '<h1>' + row.option + '</h1>';
             currentCategory = row.option;
         }
-        html += '<a href ="'+row.url+'">' + row.name + '</a></br>';
+        html += '<a class="indented-link" href ="'+row.url+'" target="_blank">' + row.name + '</a></br>';
     });
     // 将 HTML 内容一次性添加到结果 div 中
     document.getElementById('results').innerHTML = html;

@@ -1,6 +1,6 @@
 <?php
 // 连接 SQLite 数据库
-$db = new SQLite3('urldb.db');
+$db = new SQLite3('../db/urldb.db');
 
 // 执行查询
 $queryResult = $db->query('SELECT * FROM urls');
