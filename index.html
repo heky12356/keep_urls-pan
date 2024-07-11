@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,34 +9,35 @@
     <link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/marked@3.0.7/marked.min.js"></script>
     <script src="./js/funtion.js"></script>
+    <script src="./js/login.js"></script>
     <script src="./js/mkd.js"></script>
     <link rel="stylesheet" href="./css/main.css">
     <title>index</title>
 </head>
+
 <body>
     <div class="right">
-        <div class="container">
-            <form action="./php/enurl.php" method="post">
-                <label for="options">分类：  </label>
-                <input list="options" id="selectedOption" name="option">
-                <datalist id="options"></datalist>
+        <div id="login" class="container" style="display:block;">
+            <form id="loginForm">
+                <input type="text" name="username" placeholder="用户名">
+                <input type="password" name="password" placeholder="密码">
                 <p></p>
-                <label for="name">链接标题：</label>
-                <input type="text" id="name" name="name" required>
-                <p></p>
-                <label for="url">链接网址：</label>
-                <input type="text" id="url" name="url" required>
-                <p></p>
-                <button type="submit" name="enurl">添加</button>
+                <button type="button" onclick="login()">登录</button>
             </form>
+        </div>
+        <div class="container" id="protectedContent" style="display:none;">
+
         </div>
         <div>
             <p></p>
         </div>
-        <div class="container" id ="readme">
+        <div class="container" id="readme">
 
         </div>
     </div>
+
+
+
     <div id="results">
 
     </div>
