@@ -7,7 +7,6 @@ xhr.onreadystatechange = function() {
             var data = JSON.parse(xhr.responseText);
             // 处理数据
             displayResults(data);
-            displaySelect(data);
         } else {
             console.error('Request failed: ' + xhr.status);
         }
@@ -32,20 +31,14 @@ function displayResults(data) {
             html += '<h1>' + row.option + '</h1>';
             currentCategory = row.option;
         }
-        html += '<a class="indented-link" href ="'+row.url+'" target="_blank">' + row.name + '</a></br>';
+        html += '<div class = "urlcontainer">'
+        html += '<a class = "urltap"></a>'
+        html += '<a class="icon" onclick="openModal(this)"></a>'
+        html += '<a href ="'+row.url+'" target="_blank">' + row.name + '</a></br>';
+        html += '</div>'
+        html += '<p></p>'
     });
     // 将 HTML 内容一次性添加到结果 div 中
     document.getElementById('results').innerHTML = html;
 }
 
-function displaySelect(data) {
-    var html = '';
-    var innerd = '';
-    data.forEach(function(row) {
-        if(innerd != row.option){
-            html += '<option value="' + row.option + '">' + row.option + '</option>';
-            innerd = row.option;
-        }
-    });
-    document.getElementById('options').innerHTML = html;
-}

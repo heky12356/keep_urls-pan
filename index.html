@@ -11,6 +11,7 @@
     <script src="./js/funtion.js"></script>
     <script src="./js/login.js"></script>
     <script src="./js/mkd.js"></script>
+    <script src="./js/modal.js"></script>
     <link rel="stylesheet" href="./css/main.css">
     <title>index</title>
 </head>
@@ -41,6 +42,20 @@
     <div id="results">
 
     </div>
+
+    <!-- 模态框结构 -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h1>编辑</h1>
+            <p>名称: <span id="modal-text"></span></p>
+            <p>URL: <span id="modal-url"></span></p>
+            <p>分类: <span id="modal-category"></span></p>
+            <div id = "deleteContent"></div>
+        </div>
+    </div>
+
+
 </body>
 
 </html>

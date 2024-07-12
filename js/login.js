@@ -22,8 +22,10 @@ function loadProtectedContent() {
     .then(data => {
         if (data.status === 'success') {
             var protectedContent = document.getElementById('protectedContent');
+            var deleteContent = document.getElementById('deleteContent');
             var login = document.getElementById('login');
             protectedContent.innerHTML = data.content;
+            deleteContent.innerHTML = data.content2;
             protectedContent.style.display = 'block';
             login.style.display = 'none';
 
@@ -45,6 +47,7 @@ window.onload = function() {
     .then(data => {
         if (data.status === 'loggedin') {
             loadProtectedContent();
+
         }
     });
 }
