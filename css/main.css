@@ -69,8 +69,6 @@ input:focus {
     width: 25%;
     padding: 10px;
     box-sizing: border-box;
-    border-right: 1px solid #ccc;
-
 }
 
 /* ID为results的div占据剩余的80%的宽度 */
@@ -78,6 +76,7 @@ input:focus {
     width: 80%;
     padding: 10px;
     box-sizing: border-box;
+    overflow-y: auto; /* 如果内容超出，允许垂直滚动 */
 }
 
 a {
