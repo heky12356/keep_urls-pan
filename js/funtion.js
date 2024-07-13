@@ -18,10 +18,15 @@ xhr.send();
 
 // 显示结果
 function displayResults(data) {
-    var html = '';
-    var sortedData = data.slice().sort(function(a, b) {
+    var html = '<button id="toggleAll" class="toggle-all-btn">展开/折叠所有</button>';
+    var sortedData = data.slice().map(function(item) {
+        // 将空的 option 替换为 "未分类"
+        item.option = item.option || "未分类";
+        return item;
+    }).sort(function(a, b) {
         return a.option.localeCompare(b.option);
     });
+
     var currentCategory = '';
     sortedData.forEach(function(row, index) {
         if (row.option !== currentCategory) {
@@ -44,6 +49,42 @@ function displayResults(data) {
     });
     html += '</div>'; // 关闭最后一个分类的容器
     document.getElementById('results').innerHTML = html;
+
+}
+
+function displayResults(data) {
+    var html = ' ';
+    var sortedData = data.slice().map(function(item) {
+        // 将空的 option 替换为 "未分类"
+        item.option = item.option || "未分类";
+        return item;
+    }).sort(function(a, b) {
+        return a.option.localeCompare(b.option);
+    });
+
+    var currentCategory = '';
+    sortedData.forEach(function(row, index) {
+        if (row.option !== currentCategory) {
+            if (currentCategory !== '') {
+                html += '</div>'; // 关闭上一个分类的容器
+            }
+            html += `<div class="category-header">
+                        <h1>${row.option}</h1>
+                        <button class="toggle-btn" onclick="toggleCategory(this)">-</button>
+                     </div>`;
+            html += `<div class="category-container" data-category="${row.option}">`;
+            currentCategory = row.option;
+        }
+        html += `<div class="urlcontainer" data-name="${row.name}" data-url="${row.url}" data-category="${row.option}">`;
+        html += '<a class="urltap"></a>';
+        html += '<a class="icon" onclick="openModal(this)"></a>';
+        html += `<a href="${row.url}" target="_blank">${row.name}</a><br>`;
+        html += '</div>';
+        html += '<p></p>';
+    });
+    html += '</div>'; // 关闭最后一个分类的容器
+    document.getElementById('results').innerHTML = html;
+
 }
 
 

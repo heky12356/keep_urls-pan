@@ -6,12 +6,8 @@ function openModal(element) {
     const linkText = linkElement.textContent;
     const linkHref = linkElement.getAttribute('href');
 
-    // 获取分类（假设分类是最近的 h1 元素）
-    let categoryElement = element.closest('.urlcontainer').previousElementSibling;
-    while (categoryElement && categoryElement.tagName !== 'H1') {
-        categoryElement = categoryElement.previousElementSibling;
-    }
-    const category = categoryElement ? categoryElement.textContent : '未分类';
+    // 获取分类（从 data-category 属性中获取）
+    const category = element.closest('.urlcontainer').getAttribute('data-category') || '未分类';
 
     // 更新模态框内容
     const modalTextElement = document.getElementById('modal-text');
