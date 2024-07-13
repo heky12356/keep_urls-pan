@@ -162,8 +162,9 @@ button:hover {
     text-align: center;
     width: 400px; /* 设置固定宽度 */
     max-height: 80vh; /* 设置最大高度为视口高度的80% */
-    overflow-y: auto; /* 如果内容超出，允许垂直滚动 */
     position: relative; /* 为关闭按钮定位 */
+    word-wrap: break-word; /* 允许长单词或 URL 在必要的时候进行换行 */
+    overflow-wrap: break-word; /* 为了更好的浏览器兼容性 */
 }
 .close {
     color: #aaa;

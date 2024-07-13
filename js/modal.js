@@ -14,18 +14,99 @@ function openModal(element) {
     const category = categoryElement ? categoryElement.textContent : '未分类';
 
     // 更新模态框内容
-    document.getElementById('modal-text').innerText = linkText;
-    document.getElementById('modal-url').innerText = linkHref;
-    document.getElementById('modal-category').innerText = category;
+    const modalTextElement = document.getElementById('modal-text');
+    const modalUrlElement = document.getElementById('modal-url');
+    const modalCategoryElement = document.getElementById('modal-category');
+
+    if (modalTextElement) modalTextElement.innerText = linkText;
+    if (modalUrlElement) modalUrlElement.innerText = linkHref;
+    if (modalCategoryElement) modalCategoryElement.innerText = category;
 
     // 显示模态框
-    document.getElementById('modal').style.display = 'flex';
+    const modalElement = document.getElementById('modal');
+    if (modalElement) modalElement.style.display = 'flex';
+
+    // 重置按钮状态
+    const editButton = document.getElementById('edit-button');
+    const saveButton = document.getElementById('save-button');
+    if (editButton) editButton.style.display = 'inline-block';
+    if (saveButton) saveButton.style.display = 'none';
 
     // 添加删除按钮的事件监听器
-    document.getElementById('delete-button').onclick = function() {
-        deleteRecord(linkText, linkHref, category);
-    };
+    const deleteButton = document.getElementById('delete-button');
+    if (deleteButton) {
+        deleteButton.onclick = function() {
+            deleteRecord(linkText, linkHref, category);
+        };
+    }
 
+    // 添加编辑按钮的事件监听器
+    if (editButton) {
+        editButton.onclick = function() {
+            enableEditing(linkText, linkHref, category);
+        };
+    }
+}
+
+
+function enableEditing(name, url, category) {
+    document.getElementById('modal-text').innerHTML = `<input type="text" id="edit-name" value="${name}">`;
+    document.getElementById('modal-url').innerHTML = `<input type="text" id="edit-url" value="${url}">`;
+    document.getElementById('modal-category').innerHTML = `<input type="text" id="edit-category" value="${category}">`;
+    
+    document.getElementById('edit-button').style.display = 'none';
+    document.getElementById('save-button').style.display = 'inline-block';
+
+    // 更新保存按钮的事件监听器
+    document.getElementById('save-button').onclick = function() {
+        saveChanges(name, url, category);
+    };
+}
+
+function saveChanges(oldName, oldUrl, oldCategory) {
+    const newName = document.getElementById('edit-name').value;
+    const newUrl = document.getElementById('edit-url').value;
+    const newCategory = document.getElementById('edit-category').value;
+
+    updateRecord(oldName, oldUrl, oldCategory, newName, newUrl, newCategory);
+}
+
+function updateRecord(oldName, oldUrl, oldCategory, newName, newUrl, newCategory) {
+    console.log("Attempting to update - Old Name:", oldName, "Old URL:", oldUrl, "Old Category:", oldCategory);
+    console.log("New values - Name:", newName, "URL:", newUrl, "Category:", newCategory);
+    
+    const formData = new FormData();
+    formData.append('oldName', oldName);
+    formData.append('oldUrl', oldUrl);
+    formData.append('oldCategory', oldCategory);
+    formData.append('newName', newName);
+    formData.append('newUrl', newUrl);
+    formData.append('newCategory', newCategory);
+
+    fetch('./php/update.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log("Server response:", data);
+        
+        if (data.success) {
+            alert('记录更新成功');
+            closeModal();
+            location.reload();
+        } else {
+            alert('更新失败: ' + (data.message || '未知错误'));
+        }
+        
+        if (data.debug) {
+            console.log("Debug info:", data.debug);
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('发生错误，请查看控制台');
+    });
 }
 
 function deleteRecord(name, url, category) {
@@ -64,7 +145,14 @@ function deleteRecord(name, url, category) {
 }
 
 function closeModal() {
-    document.getElementById('modal').style.display = 'none';
+    document.getElementById('modal').style.display = 'none' ;
+       // 重置模态框内容
+       document.getElementById('modal-text').innerText = '';
+       document.getElementById('modal-url').innerText = '';
+       document.getElementById('modal-category').innerText = '';
+       // 重置按钮状态
+       document.getElementById('edit-button').style.display = 'inline-block';
+       document.getElementById('save-button').style.display = 'none';
 }
 
 window.onclick = function (event) {
@@ -73,3 +161,5 @@ window.onclick = function (event) {
         closeModal();
     }
 }
+
+
