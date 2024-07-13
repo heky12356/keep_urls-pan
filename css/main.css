@@ -187,3 +187,58 @@ button:hover {
     transform: scale(1.2);
     cursor: pointer; /* 鼠标悬停时显示指针光标 */
 }
+
+.category-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+
+.category-header h1 {
+    margin: 0;
+}
+
+/* 折叠按钮 */
+
+.toggle-btn {
+    background-color: transparent;
+    border: none;
+    color: #333;
+    cursor: pointer;
+    font-size: 20px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+}
+
+.toggle-btn:hover {
+    border-bottom: 1px solid #fff;
+    color: #ffffff
+}
+
+.category-container {
+    transition: max-height 0.3s ease-out;
+    overflow: hidden;
+}
+
+.toggle {
+    background-color: rgba(255, 255, 255, 0.3);
+    /* 半透明白色背景 */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    /* 阴影效果 */
+    transition: background-color 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 20px;
+    width: 150px;
+    height: 30px;
+    border-radius: 8px;
+
+}
+
