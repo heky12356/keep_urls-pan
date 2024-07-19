@@ -1,9 +1,12 @@
 <?php
 session_start();
 
-// 假设用户名和密码存储在数据库或其他安全地方
-$validUsername = 'user';
-$validPassword = 'password';
+// 读取 JSON 文件中的用户名和密码
+$credentials = json_decode(file_get_contents('../credentials.json'), true);
+
+$validUsername = $credentials['username'];
+$validPassword = $credentials['password'];
+
 
 if ($_POST['username'] == $validUsername && $_POST['password'] == $validPassword) {
     $_SESSION['loggedin'] = true;
