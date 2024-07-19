@@ -23,9 +23,11 @@ function loadProtectedContent() {
         if (data.status === 'success') {
             var protectedContent = document.getElementById('protectedContent');
             var deleteContent = document.getElementById('deleteContent');
+            var guanliContent = document.getElementById('toggle');
             var login = document.getElementById('login');
             protectedContent.innerHTML = data.content;
             deleteContent.innerHTML = data.content2;
+            guanliContent.innerHTML = data.fenleiguanli;
             protectedContent.style.display = 'block';
             login.style.display = 'none';
 

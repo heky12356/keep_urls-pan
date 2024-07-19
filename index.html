@@ -13,7 +13,9 @@
     <script src="./js/mkd.js"></script>
     <script src="./js/modal.js"></script>
     <script src="./js/title.js"></script>
+    <script src="./js/dropurl.js"></script>
     <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/dropcontainer.css">
     <link rel="manifest" href="./source/icon/site.webmanifest">
     <link rel="icon" href="./source/icon/favicon.ico" type="image/x-icon">
     <title>LinkVault</title>
@@ -38,10 +40,17 @@
         <div class="container" id="readme">
 
         </div>
-            <p></p>
+        <p></p>
         <div class="toggle">
             <button id="toggleAll" class="toggle-all-btn">展开/折叠所有</button>
         </div>
+
+        <p></p>
+        <div id = "toggle">
+
+        </div>
+
+
     </div>
 
 
@@ -61,6 +70,25 @@
             <div id="deleteContent"></div>
         </div>
     </div>
+
+
+    <!-- 编辑分类模态框 -->
+    <div id="edit-category-modal" class="dropmodal">
+        <div class="dropmodal-lite">
+            <span class="dropclose" onclick="closedropModal()">&times;</span>
+            <h2>管理链接分类</h2>
+            <p></p>
+            <div class="dropmodal-content">
+                <div id="categories-container">
+                    <!-- 动态加载分类和链接 -->
+                </div>
+            </div>
+            <p></p>
+            <button onclick="DropsaveChanges()">保存</button>
+        </div>
+    </div>
+
+
 
 
 </body>

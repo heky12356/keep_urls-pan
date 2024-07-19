@@ -35,8 +35,13 @@ $neitng2 = '<button id="delete-button">删除</button>
             <button id="save-button" style="display: none;">保存</button>
 ';
 
+$guanlifenlei = '<div class="toggle" >
+                     <button id="manage-categories-btn" onclick = "opendropModal()">管理分类</button>
+                </div>
+';
+
 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
-    echo json_encode(['status' => 'success', 'content' => $neitng, 'content2' => $neitng2]);
+    echo json_encode(['status' => 'success', 'content' => $neitng, 'content2' => $neitng2, 'fenleiguanli' => $guanlifenlei]);
 } else {
     echo json_encode(['status' => 'error', 'message' => '未登录']);
 }
