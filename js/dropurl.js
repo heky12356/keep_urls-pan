@@ -65,13 +65,6 @@ function closedropModal() {
     document.getElementById('edit-category-modal').style.display = 'none';
 }
 
-window.onclick = function (event) {
-    const modal = document.getElementById('edit-category-modal');
-    if (event.target === modal) {
-        closedropModal();
-    }
-}
-
 
 let draggedElement = null;
 

@@ -150,12 +150,3 @@ function closeModal() {
        document.getElementById('edit-button').style.display = 'inline-block';
        document.getElementById('save-button').style.display = 'none';
 }
-
-window.onclick = function (event) {
-    const modal = document.getElementById('modal');
-    if (event.target === modal) {
-        closeModal();
-    }
-}
-
-
